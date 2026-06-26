@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IT Inventory Register</title>
+  <link rel="stylesheet" href="assets/css/style-Option2.css" />
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <div class="main-container">
+      <header class="main-header">
+        <h1>IT Inventory Register</h1>
+        <p>Manage and monitor infrastructure assets in real-time.</p>
+      </header>
+
+      <div id="dashboard" class="dashboard-grid empty-state">
+
+        <div class="form-card">
+          <h2>Register New Hardware</h2>
+          <div class="form-group">
+            <label for="type">Device Category</label>
+            <select id="type">
+              <option value="Category" disabled selected hidden>Select a category...</option>
+              <option value="Server">Server</option>
+              <option value="Laptop">Laptop</option>
+              <option value="DesktopPC">Desktop-PC</option>
+              <option value="Phone">Smartphone</option>
+              <option value="Tablet">Tablet / iPad</option>
+              <option value="Accessory">Accessory</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Hardware Name</label>
+            <input type="text" id="name" placeholder="e.g. Dell PowerEdge R750" />
+          </div>
+
+          <div class="form-group">
+            <label for="ram">RAM Amount (GB)</label>
+            <input type="number" id="ram" placeholder="e.g. 16" />
+          </div>
+
+          <div class="form-group">
+            <label for="security">Security Code</label>
+            <input type="password" id="security" placeholder="••••••••" />
+          </div>
+          
+          
+          <button id="btn-submit-main" class="btn-submit" onclick="registrarNuevo()">Register Asset</button>
+        </div>
+        
+        <div class="display-panel">
+          <div id="inventario-display" class="grid-container"></div>
+        </div>
+        
+        
+      </div>
+        <div id="status-log" class="log-area"></div>
+
+    </div>
+  </div>
+  <script src="assets/js/primer-test-Option2.js"></script>
+</body>
+
+</html>

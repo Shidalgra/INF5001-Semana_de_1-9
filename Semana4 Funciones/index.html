@@ -1,30 +1,37 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <title>El Gran Resultado</title>
-    <link rel="icon" type="image/png" href="assets/images/Logo_Activando_El_Coeficiente_Intelectual_Tab.png" />
-  </head>
-  <body>
-    <div class="contenedor-credito">
-      <h1>Simulador de Crédito U.Empresarial</h1>
 
-      <div class="formulario">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>El Gran Resultado</title>
+  <link rel="icon" type="image/png" href="assets/images/Logo_Activando_El_Coeficiente_Intelectual_Tab.png" />
+</head>
+
+<body>
+  <div class="contenedor-credito">
+    <h1>Simulador de Crédito U.Empresarial</h1>
+
+    <div class="formulario">
+      <div class="gap-organized">
         <label>Promedio Actual:</label>
         <input type="number" id="promedio" placeholder="Ej: 85" />
-
+      </div>
+      <div class="gap-organized">
         <label>Monto Solicitado (₡):</label>
         <input type="number" id="monto" placeholder="Ej: 500000" />
-
-        <button onclick="procesarSolicitud()">Analizar Crédito</button>
       </div>
-
-      <div id="resultado-credito" class="pantalla-resultado">
-        Ingrese sus datos para iniciar el análisis...
+      <div class="gap-organized">
+        <button class="btn-AnalizarCredito" onclick="procesarSolicitud()">Analizar Crédito</button>
       </div>
     </div>
-    <script src="assets/js/4- credito.js"></script>
-  </body>
+
+    <div id="resultado-credito" class="pantalla-resultado">
+      Ingrese sus datos para iniciar el análisis...
+    </div>
+  </div>
+  <script src="assets/js/4- credito.js"></script>
+</body>
+
 </html>

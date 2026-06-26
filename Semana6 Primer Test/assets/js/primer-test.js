@@ -26,12 +26,10 @@ class Server extends Dispositivo {
   }
 }
 
-class Laptop extends Dispositivo {
-  constructor(name, codigo, ram) {
-    super(name, codigo, ram);
-    this.category = "Laptop";
+class Laptop extends Dispositivo { 
+  constructor(name, codigo, ram) { super(name, codigo, ram);this.category = "Laptop";
   }
-
+  
   obtenerFicha() {
     return `
       <div class="card laptop-card">

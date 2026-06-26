@@ -1,0 +1,367 @@
+/* --- RESET GENERAL --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-main: #0f172a;
+  --bg-card: #1e293b;
+  --bg-input: #334155;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+
+  /* Estados RAM */
+  --ram-optimo: #00b894;
+  --ram-alerta: #d63031;
+
+  /* Categorías */
+  --color-server: #e94560;
+  --color-laptop: #f59e0b;
+  --color-desktop: #10b981;
+  --color-phone: #a855f7;      /* Púrpura */
+  --color-tablet: #06b6d4;     /* Neón / Cian */
+  --color-accessory: #64748b;  /* Gris Slate */
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+/* Envoltura para garantizar centrado vertical en la pantalla */
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.main-container {
+  width: 100%;
+  max-width: 1200px;
+  transition: all 0.5s ease;
+}
+
+.main-header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.main-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.main-header p {
+  color: var(--text-muted);
+}
+
+/* --- GRID DINÁMICO (LA CLAVE) --- */
+.dashboard-grid {
+  display: grid;
+  gap: 40px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ESTADO 1: Vacío -> El formulario mide 400px y está centrado */
+.dashboard-grid.empty-state {
+  grid-template-columns: 1fr;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.dashboard-grid.empty-state .display-panel {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(50px);
+  height: 0;
+  overflow: hidden;
+}
+
+/* ESTADO 2: Con items -> Se expande a dos columnas y desliza el inventario */
+.dashboard-grid.has-items {
+  grid-template-columns: 380px 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-grid.has-items .display-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 900px) {
+  .dashboard-grid.has-items {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- DISEÑO DEL FORMULARIO --- */
+.form-card {
+  background: var(--bg-card);
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid #475569;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+  height: fit-content;
+}
+
+.form-card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 24px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 14px;
+  background: var(--bg-input);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+  background: #1e293b;
+}
+
+input::placeholder {
+  color: #64748b;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 15px;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  transition: all 0.2s ease;
+  margin-top: 10px;
+  box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.3);
+}
+
+.btn-submit:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  cursor: pointer;
+}
+
+/* --- PANEL DE ESTADO / LOGS --- */
+/* --- PANEL DE ESTADO / LOGS --- */
+.log-area {
+  /* 1. Estilos base y tipografía */
+  font-family: monospace;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  border-left: 4px solid transparent;
+
+  /* 2. ESTADO OCULTO POR DEFECTO (Magia de UX) */
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  min-height: 0;
+  padding: 0 20px; 
+  margin-bottom: 0;
+  overflow: hidden;
+  
+  /* 3. Animación fluida de entrada y salida */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ESTADO VISIBLE: ERROR CRÍTICO */
+.critical-error {
+  background: rgba(233, 69, 96, 0.1);
+  border-left-color: var(--ram-alerta);
+  color: #ff4d4d;
+  
+  /* Revelar el contenedor */
+  opacity: 1;
+  visibility: visible;
+  min-height: 54px;
+  padding: 12px 20px;
+  margin: 25px 0;
+  justify-content: center;
+}
+
+/* ESTADO VISIBLE: ÉXITO */
+.success-error {
+  background: rgba(0, 184, 148, 0.1);
+  border-left-color: var(--ram-optimo);
+  color: var(--ram-optimo);
+  
+  /* Revelar el contenedor */
+  opacity: 1;
+  visibility: visible;
+  min-height: 54px;
+  padding: 12px 20px;
+  margin: 25px 0px;
+  justify-content: center;
+}
+
+/* --- TARJETAS DE HARDWARE --- */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--bg-card);
+  padding: 24px;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #334155;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.card-info p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* Indicadores de RAM (Bordes izquierdos estilizados) */
+.card.alerta {
+  border-left: 6px solid var(--ram-alerta);
+}
+
+.card.optimo {
+  border-left: 6px solid var(--ram-optimo);
+}
+
+/* Colores de Badges por categoría */
+.server-card .card-badge {
+  background: rgba(233, 69, 96, 0.15);
+  color: var(--color-server);
+}
+
+.laptop-card .card-badge {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--color-laptop);
+}
+
+.desktop-pc-card .card-badge {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--color-desktop);
+}
+
+/* --- BOTONES DE ACCIÓN EN LAS TARJETAS --- */
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 15px;
+  border-top: 1px solid #334155;
+  padding-top: 12px;
+}
+
+.btn-action {
+  background: #334155;
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-edit:hover {
+  background: rgba(245, 158, 11, 0.2);
+  transform: scale(1.05);
+}
+
+.btn-delete:hover {
+  background: rgba(233, 69, 96, 0.2);
+  transform: scale(1.05);
+}
+
+/* Indicador neutral si un accesorio no reporta RAM */
+.card.no-ram {
+  border-left: 6px solid var(--color-accessory);
+}
+
+/* Estilos de badges para las nuevas categorías */
+.phone-card .card-badge { 
+  background: rgba(168, 85, 247, 0.15); 
+  color: var(--color-phone); 
+}
+
+.tablet-card .card-badge { 
+  background: rgba(6, 182, 212, 0.15); 
+  color: var(--color-tablet); 
+}
+
+.accessory-card .card-badge { 
+  background: rgba(100, 116, 139, 0.15); 
+  color: var(--text-muted); 
+}

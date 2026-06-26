@@ -4,24 +4,33 @@
 *,
 *::before,
 *::after {
-  margin: 0; /* Quita márgenes externos */
-  padding: 0; /* Quita rellenos internos */
-  box-sizing: border-box; /* ¡VITAL! Hace que el padding no sume al ancho total */
+  margin: 0;
+  /* Quita márgenes externos */
+  padding: 0;
+  /* Quita rellenos internos */
+  box-sizing: border-box;
+  /* ¡VITAL! Hace que el padding no sume al ancho total */
 }
 
 html {
-  scroll-behavior: smooth; /* Hace que al saltar entre secciones el scroll sea suave */
+  scroll-behavior: smooth;
+  /* Hace que al saltar entre secciones el scroll sea suave */
 }
 
 body {
-  min-height: 100vh; /* Alto del vieport - Que siempre ocupe al menos el alto de la pantalla */
-  line-height: 1.5; /* Mejora la lectura del texto */
-  -webkit-font-smoothing: antialiased; /* Hace que las letras se vean más finas y nítidas */
+  min-height: 100vh;
+  /* Alto del vieport - Que siempre ocupe al menos el alto de la pantalla */
+  line-height: 1.5;
+  /* Mejora la lectura del texto */
+  -webkit-font-smoothing: antialiased;
+  /* Hace que las letras se vean más finas y nítidas */
   font-family:
-    "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* O la fuente que elijas */
+    "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* O la fuente que elijas */
   background-color: #f4f4f4;
   color: #333;
-  overflow-x: hidden; /* Evita el scroll horizontal molesto por errores de píxeles */
+  overflow-x: hidden;
+  /* Evita el scroll horizontal molesto por errores de píxeles */
 }
 
 /* Evita que las imágenes se salgan de su contenedor */
@@ -30,7 +39,8 @@ picture,
 video,
 canvas,
 svg {
-  display: block; /* Quita un espacio extraño que dejan abajo las imágenes */
+  display: block;
+  /* Quita un espacio extraño que dejan abajo las imágenes */
   max-width: 100%;
 }
 
@@ -43,41 +53,161 @@ ol {
 /* Quita la línea de abajo de los enlaces y les da un color base */
 a {
   text-decoration: none;
-  color: inherit; /* Hereda el color del texto del padre */
+  color: inherit;
+  /* Hereda el color del texto del padre */
 }
 
 /* Hace que los botones y inputs se vean iguales en todos lados */
 button,
 input,
 textarea {
-  font: inherit; /* Obliga a usar la misma fuente que el body */
+  font: inherit;
+  /* Obliga a usar la misma fuente que el body */
   border: none;
-  outline: none; /* Quita el borde azul feo al hacer clic */
+  outline: none;
+  /* Quita el borde azul feo al hacer clic */
 }
 
 button {
-  cursor: pointer; /* Siempre pone la manito al pasar el mouse */
+  cursor: pointer;
+  /* Siempre pone la manito al pasar el mouse */
 }
 
 /* --------------------------------------------------------------------------------------- */
 
-.pantalla-resultado {
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 8px;
-  background: #eee;
-  text-align: center;
+/* Centrado absoluto en toda la pantalla */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* Degradado moderno */
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
-/* Clases que JS pondrá o quitará */
+/* Tarjeta contenedora con efecto flotante */
+.contenedor-credito {
+  background-color: #ffffff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  max-width: 480px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+h1 {
+  font-size: 1.6rem;
+  color: #2c3e50;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Formulario apilado verticalmente */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Contenedores individuales de etiquetas e inputs */
+.gap-organized {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gap-organized label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #57606f;
+}
+
+/* Estilo limpio para los campos de texto */
+.gap-organized input[type="number"] {
+  border: 2px solid #edeff2;
+  padding: 14px 16px;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #f8f9fa;
+  color: #2f3542;
+  transition: all 0.3s ease;
+}
+
+/* Efecto visual cuando el usuario escribe */
+.gap-organized input[type="number"]:focus {
+  border-color: #6c5ce7;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.1);
+}
+
+/* Botón estilizado */
+.btn-AnalizarCredito {
+  background: linear-gradient(135deg, #0984e3, #6c5ce7);
+  color: white;
+  padding: 16px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-top: 8px;
+}
+
+.btn-AnalizarCredito:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+}
+
+.btn-AnalizarCredito:active {
+  transform: scale(0.98);
+}
+
+/* Pantalla de resultados unificada */
+.pantalla-resultado {
+  padding: 20px;
+  border-radius: 12px;
+  background: #f1f2f6;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #57606f;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+/* Estados dinámicos inyectados por JavaScript */
 .aprobado {
-  background-color: #d4edda;
-  color: #155724;
-  border: 2px solid #c3e6cb;
+  background-color: #ebfbee;
+  color: #2b8a3e;
+  border-color: #40c057;
+}
+
+.aprobado h3 {
+  color: #2b8a3e;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.aprobado p {
+  margin: 4px 0;
+  font-size: 0.95rem;
 }
 
 .denegado {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 2px solid #f5c6cb;
+  background-color: #fff5f5;
+  color: #c92a2a;
+  border-color: #fa5252;
+}
+
+.denegado h3 {
+  color: #c92a2a;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
 }
