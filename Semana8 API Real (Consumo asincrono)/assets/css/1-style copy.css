@@ -1,0 +1,150 @@
+/*Limpiando*/
+
+/* Selecciona TODOS los elementos */
+*,
+*::before,
+*::after {
+    margin: 0;
+    /* Quita márgenes externos */
+    padding: 0;
+    /* Quita rellenos internos */
+    box-sizing: border-box;
+    /* ¡VITAL! Hace que el padding no sume al ancho total */
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Hace que al saltar entre secciones el scroll sea suave */
+}
+
+body {
+    min-height: 100vh;
+    /* Alto del vieport - Que siempre ocupe al menos el alto de la pantalla */
+    line-height: 1.5;
+    /* Mejora la lectura del texto */
+    -webkit-font-smoothing: antialiased;
+    /* Hace que las letras se vean más finas y nítidas */
+    font-family:
+        "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    /* O la fuente que elijas */
+    background-color: #f4f4f4;
+    color: #333;
+    overflow-x: hidden;
+    /* Evita el scroll horizontal molesto por errores de píxeles */
+}
+
+/* Evita que las imágenes se salgan de su contenedor */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    /* Quita un espacio extraño que dejan abajo las imágenes */
+    max-width: 100%;
+}
+
+/* Quita los puntos de las listas (ul/ol) */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Quita la línea de abajo de los enlaces y les da un color base */
+a {
+    text-decoration: none;
+    color: inherit;
+    /* Hereda el color del texto del padre */
+}
+
+/* Hace que los botones y inputs se vean iguales en todos lados */
+button,
+input,
+textarea {
+    font: inherit;
+    /* Obliga a usar la misma fuente que el body */
+    border: none;
+    outline: none;
+    /* Quita el borde azul feo al hacer clic */
+}
+
+button {
+    cursor: pointer;
+    /* Siempre pone la manito al pasar el mouse */
+}
+
+/* --------------------------------------------------------------------------------------- */
+
+
+body {
+    font-family: sans-serif;
+    padding: 20px;
+    background-color: #f5f5f5; /* El fondo gris claro de la imagen */
+}
+
+.titulo {
+    font-size: 28px;
+    font-weight: 700;       /* Grosor de letra marcado pero limpio */
+    color: #1a1a1a;         /* Un tono casi negro muy moderno */
+    margin-bottom: 15px;    /* Separa el título del botón "Cargar Usuarios" */
+    letter-spacing: -0.5px; /* Junta un poco las letras para un look más profesional */
+    text-align: center;
+}
+
+.contenedorBtn {
+    font-size: 15px;
+    font-weight: 700;       /* Grosor de letra marcado pero limpio */
+    color: #1a1a1a;         /* Un tono casi negro muy moderno */
+    margin-bottom: 15px;    /* Separa el título del botón "Cargar Usuarios" */
+    letter-spacing: -0.5px; /* Junta un poco las letras para un look más profesional */
+    text-align: center;
+}
+
+.btnCargar {
+    width: 150px;
+    height: 35px;
+    background-color: blue;
+    color: white;
+    border-radius: 10px;
+    /* Sombra normal: desplazamiento X, desplazamiento Y, desenfoque (blur), y color */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    /* Transición suave para que el cambio no sea brusco */
+    transition: all 0.2s ease;
+    border: none;
+    text-align: center;
+}
+
+.btnCargar:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+}
+
+.btnCargar:active {
+    /* Mueve el botón 2 píxeles hacia abajo */
+    transform: translateY(2px) scale(0.98);
+    /* El valor 'inset' crea el efecto de sombra hundida dentro del botón */
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Cambia esto en tu contenedor principal */
+#contenedorUsuarios {
+    display: grid;
+    /* Crea 3 columnas iguales que se adaptan al espacio */
+    grid-template-columns: repeat(3, 1fr); 
+    /* Espacio uniforme de 20px entre cada tarjeta */
+    gap: 20px; 
+    margin-top: 20px;
+}
+
+/* Ajustes para que la tarjeta se vea idéntica a la imagen */
+.card {
+    font-size: 15px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    /* Sombra muy sutil para el efecto de relieve de la foto */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    /* Opcional: un borde gris claro muy delgado */
+    border: 1px solid #e0e0e0; 
+}
+

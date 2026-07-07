@@ -1,0 +1,155 @@
+/*Limpiando*/
+
+/* Selecciona TODOS los elementos */
+*,
+*::before,
+*::after {
+    margin: 0;
+    /* Quita márgenes externos */
+    padding: 0;
+    /* Quita rellenos internos */
+    box-sizing: border-box;
+    /* ¡VITAL! Hace que el padding no sume al ancho total */
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Hace que al saltar entre secciones el scroll sea suave */
+}
+
+body {
+    min-height: 100vh;
+    /* Alto del vieport - Que siempre ocupe al menos el alto de la pantalla */
+    line-height: 1.5;
+    /* Mejora la lectura del texto */
+    -webkit-font-smoothing: antialiased;
+    /* Hace que las letras se vean más finas y nítidas */
+    font-family:
+        "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    /* O la fuente que elijas */
+    background-color: #f4f4f4;
+    color: #333;
+    overflow-x: hidden;
+    /* Evita el scroll horizontal molesto por errores de píxeles */
+}
+
+/* Evita que las imágenes se salgan de su contenedor */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    /* Quita un espacio extraño que dejan abajo las imágenes */
+    max-width: 100%;
+}
+
+/* Quita los puntos de las listas (ul/ol) */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Quita la línea de abajo de los enlaces y les da un color base */
+a {
+    text-decoration: none;
+    color: inherit;
+    /* Hereda el color del texto del padre */
+}
+
+/* Hace que los botones y inputs se vean iguales en todos lados */
+button,
+input,
+textarea {
+    font: inherit;
+    /* Obliga a usar la misma fuente que el body */
+    border: none;
+    outline: none;
+    /* Quita el borde azul feo al hacer clic */
+}
+
+button {
+    cursor: pointer;
+    /* Siempre pone la manito al pasar el mouse */
+}
+
+/* --------------------------------------------------------------------------------------- */
+
+/* Contenedor principal (centrado tipo app) */
+body {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.card {
+    width: 500px;
+    background: #1a1a1a;
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    border: 2px solid #ffcc00;
+    margin: auto;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    align-items: center;
+}
+
+#result {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+
+}
+
+#result .image{
+    display: flex;
+    justify-content: center;
+    margin: 25px 25px;
+}
+
+#img {
+    display: none;
+    width: 250px;
+    background: #333;
+    border-radius: 50%;
+    border: #f4f4f4 solid;
+    box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, 0.5);
+}
+
+#stats {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+#stats p{
+    font-size: 16px;
+    font-weight: bolder;
+    color: #ffcc00;
+}
+
+#stats p span{
+    font-size: 16px;
+    font-weight: normal;
+    color: #fff;
+}
+
+
+
+input {
+    padding: 8px;
+    border-radius: 5px;
+    width: 60%;
+}
+
+button {
+    padding: 8px;
+    background: #ffcc00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
