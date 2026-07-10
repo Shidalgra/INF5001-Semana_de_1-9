@@ -1,0 +1,534 @@
+/* Limpiando */
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Segoe UI", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  overflow-x: hidden;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------------------------------------- */
+
+/* configuracion general  */
+
+:root {
+  --cc-red: #f40009;
+  --cc-red-hover: #c30006;
+  --cc-dark: #111111;
+  --cc-white: #ffffff;
+  --cc-gray-light: #f9f9f9;
+  --cc-gray-border: #e0e0e0;
+  --cc-text-muted: #666666;
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--cc-white);
+  color: var(--cc-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* --- 1. AD OVERLAY ASÍNCRONO --- */
+.ad-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(17, 17, 17, 0.92);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.ad-content {
+  background: var(--cc-white);
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  border-top: 8px solid var(--cc-red);
+}
+
+.close-ad {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
+}
+
+.close-ad:hover {
+  color: var(--cc-red);
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 6px;
+  background-color: var(--cc-gray-border);
+  border-radius: 3px;
+  margin: 25px 0 10px 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background-color: var(--cc-red);
+  transition: width 0.1s linear;
+}
+
+.ad-status {
+  font-size: 13px;
+  color: var(--cc-text-muted);
+  font-style: italic;
+}
+
+/* --- 2. HEADER FLEXBOX --- */
+.main-header {
+  background-color: rgba(17, 17, 17, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 8%;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.logo img {
+  height: 38px;
+  transition: transform 0.3s;
+  color: white;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+}
+
+.main-nav a {
+  color: var(--cc-white);
+  text-decoration: none;
+  padding: 8px 16px;
+  font-weight: 500;
+  font-size: 15px;
+  border-radius: 4px;
+  transition: var(--transition-smooth);
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  background-color: var(--cc-red);
+}
+
+/* --- 3. HERO CARRUSEL --- */
+.hero-carousel {
+  position: relative;
+  height: 75vh;
+  background: #000;
+  overflow: hidden;
+}
+
+.carousel-container {
+  height: 100%;
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+  z-index: 1;
+}
+
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(50%);
+}
+
+.slide-text {
+  position: absolute;
+  bottom: 15%;
+  left: 8%;
+  right: 8%;
+  color: var(--cc-white);
+  max-width: 650px;
+  z-index: 3;
+  transform: translateY(20px);
+  transition: transform 0.8s ease;
+}
+
+.slide.active .slide-text {
+  transform: translateY(0);
+}
+
+.badge {
+  background-color: var(--cc-red);
+  color: white;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.badge.Zero {
+  background-color: #333333;
+  border: 1px solid #555;
+}
+
+.slide-text h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin-bottom: 15px;
+  font-weight: 800;
+}
+
+.slide-text p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  color: #e0e0e0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 30px;
+  transition: var(--transition-smooth);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--cc-red);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--cc-red-hover);
+  transform: translateY(-2px);
+}
+
+.btn-dark {
+  background: #222;
+  color: white;
+  border: 1px solid #444;
+}
+
+.btn-dark:hover {
+  background: #111;
+  transform: translateY(-2px);
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(17, 17, 17, 0.6);
+  color: var(--cc-white);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--transition-smooth);
+}
+
+.carousel-btn:hover {
+  background: var(--cc-red);
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+/* --- 4. PRODUCTOS (CSS GRID RESPONSIVO) --- */
+.products-section {
+  padding: 80px 8%;
+  background-color: var(--cc-gray-light);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.divider {
+  width: 60px;
+  height: 4px;
+  background-color: var(--cc-red);
+  margin: 15px auto;
+  border-radius: 2px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 35px;
+}
+
+.product-card {
+  background: var(--cc-white);
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid var(--cc-gray-border);
+  transition: var(--transition-smooth);
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border-color: var(--cc-red);
+}
+
+.product-card img {
+  height: 220px;
+  width: 100%;
+  object-fit: contain;
+  margin-bottom: 20px;
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.06);
+}
+
+.product-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.product-card p {
+  color: var(--cc-text-muted);
+  font-size: 14px;
+  margin-bottom: 20px;
+  height: 44px;
+  overflow: hidden;
+}
+
+/* --- SKELETON LOADERS ANIMATIONS --- */
+.skeleton-card {
+  background: var(--cc-white);
+  border-radius: 12px;
+  padding: 30px;
+  border: 1px solid var(--cc-gray-border);
+}
+
+.skeleton-img {
+  height: 220px;
+  background: #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  animation: skeleton-pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-text {
+  background: #e0e0e0;
+  border-radius: 4px;
+  margin: 0 auto 10px auto;
+  animation: skeleton-pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-text.line-1 {
+  width: 70%;
+  height: 20px;
+}
+
+.skeleton-text.line-2 {
+  width: 90%;
+  height: 14px;
+}
+
+@keyframes skeleton-pulse {
+  0% {
+    background-color: #e0e0e0;
+  }
+
+  50% {
+    background-color: #ededed;
+  }
+
+  100% {
+    background-color: #e0e0e0;
+  }
+}
+
+/* --- 5. EXPERIENCIA INTERACTIVA & SCROLL EFFECT --- */
+.experience-section {
+  padding: 80px 8%;
+  background-color: var(--cc-white);
+}
+
+.experience-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 50px;
+}
+
+.experience-image,
+.experience-text {
+  flex: 1 1 300px;
+}
+
+.experience-image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.experience-text h2 {
+  font-size: 2.3rem;
+  margin-bottom: 20px;
+}
+
+.features-list {
+  margin-top: 25px;
+  list-style: none;
+}
+
+.features-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--cc-gray-border);
+  font-weight: 500;
+}
+
+.fade-in-element {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-element.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- 6. FOOTER --- */
+.main-footer {
+  background-color: var(--cc-dark);
+  color: #888;
+  padding: 40px 8%;
+  text-align: center;
+  border-top: 4px solid var(--cc-red);
+}
+
+.footer-meta {
+  font-size: 12px;
+  color: #555;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .main-nav ul {
+    display: none;
+  }
+
+  .slide-text h1 {
+    font-size: 2.2rem;
+  }
+}

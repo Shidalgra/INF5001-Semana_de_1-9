@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Landing page oficial de Coca-Cola Global - Siente la Magia de Verdad. Proyecto avanzado de Tecnologías Web.">
+    <meta name="author" content="Cátedra de Introducción a Tecnologías Web">
+    <title>Coca-Cola Global | Siente el Sabor</title>
+    
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://upload.wikimedia.org">
+    <link rel="icon" href="assets/images/Logo_Activando_El_Coeficiente_Intelectual_Tab.png" type="image/png">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+    <div id="welcome-ad" class="ad-overlay" role="dialog" aria-labelledby="ad-title" aria-hidden="false">
+        <div class="ad-content">
+            <button class="close-ad" id="closeAdBtn" aria-label="Cerrar anuncio">&times;</button>
+            <h2 id="ad-title">🎯 ¡Alianza Estratégica!</h2>
+            <p>Conectando con el servidor central de Coca-Cola Company...</p>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="adProgressBar"></div>
+            </div>
+            <p class="ad-status" id="adStatus">Verificando credenciales académicas de Semana 9...</p>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Coca-Cola_logo2.svg" alt="Logotipo Oficial de Coca-Cola">
+            <!-- <img src="assets/images/logo.png" width="75" alt="Logotipo Oficial de Coca-Cola"> -->
+        </div>
+        <nav class="main-nav" aria-label="Navegación principal">
+            <ul>
+                <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                <li><a href="#productos" class="nav-link">Productos</a></li>
+                <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <section id="inicio" class="hero-carousel" aria-roledescription="carrusel" aria-label="Destacados de Coca-Cola">
+            <div class="carousel-container">
+                <article class="slide active" aria-hidden="false">
+                    <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=1470" alt="Botella de Coca-Cola Clásica helada con fondo rojo escarlata">
+                    <div class="slide-text">
+                        <span class="badge">Original</span>
+                        <h1>Siente la Magia de Verdad</h1>
+                        <p>La receta icónica que ha unido al mundo entero durante generaciones desde 1886.</p>
+                        <a href="#productos" class="btn btn-primary">Explorar Sabor</a>
+                    </div>
+                </article>
+                <article class="slide" aria-hidden="true">
+                    <img src="https://images.unsplash.com/photo-1554866585-cd94860890b7?q=80&w=1470" alt="Lata de Coca-Cola Zero Azúcar rodeada de burbujas y frescura">
+                    <div class="slide-text">
+                        <span class="badge Zero">Zero</span>
+                        <h1>Cero Azúcar, Máximo Sabor</h1>
+                        <p>Para quienes no están dispuestos a comprometer absolutamente nada del sabor real.</p>
+                        <a href="#productos" class="btn btn-dark">Ver Opciones</a>
+                    </div>
+                </article>
+            </div>
+            
+            <button class="carousel-btn prev" id="prevBtn" aria-label="Diapositiva anterior">&#10094;</button>
+            <button class="carousel-btn next" id="nextBtn" aria-label="Diapositiva siguiente">&#10095;</button>
+        </section>
+
+        <section id="productos" class="products-section">
+            <div class="section-header">
+                <h2>Nuestra Familia de Productos</h2>
+                <div class="divider"></div>
+                <p class="subtitle" id="products-subtitle">Sincronizando el catálogo digital en tiempo real desde el servidor...</p>
+            </div>
+            
+            <div class="products-grid" id="productsGrid">
+                <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-text line-1"></div><div class="skeleton-text line-2"></div></div>
+                <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-text line-1"></div><div class="skeleton-text line-2"></div></div>
+                <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-text line-1"></div><div class="skeleton-text line-2"></div></div>
+            </div>
+        </section>
+
+        <section id="experiencia" class="experience-section">
+            <div class="experience-container">
+                <div class="experience-image">
+                    <img src="https://images.unsplash.com/photo-1560008581-09826d1de69e?q=80&w=600" alt="Destapar una chapa de Coca-Cola capturada en alta velocidad">
+                </div>
+                <div class="experience-text fade-in-element">
+                    <h2>¿Por qué el sabor es único?</h2>
+                    <p>Cada burbuja está diseñada para activar memorias y momentos felices. No es solo una bebida, es una experiencia sensorial completa que inicia desde el instante en que escuchas el característico sonido al destaparla.</p>
+                    <ul class="features-list">
+                        <li>⚡ Burbujas de Carbonatación Perfecta</li>
+                        <li>🌱 Extractos de Origen Natural Seleccionados</li>
+                        <li>🌍 Compromiso Global de Reciclaje de Envases</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 The Coca-Cola Company. Desarrollado con JavaScript Avanzado por Shidalgra en UEmpresarial Curso de Tecnologías Web.</p>
+            <p class="footer-meta">Semana 9: Rompiendo mitos de librerías externas • Código Nativo Multiplataforma</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/carousel.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

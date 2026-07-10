@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab 5 - Promesas y Async</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" type="image/png" href="assets/images/Logo_Activando_El_Coeficiente_Intelectual_Tab.png" />
+</head>
+
+<body>
+  <section id="header">
+    <header class="up">
+      <img src="assets/icon/irregular.png" class="logo" alt="Logo">
+      <nav class="navegacion">
+        <ul class="menu-principal">
+          <li><a href="#">Inicio</a></li>
+          <!-- Elemento con submenú -->
+          <li class="tiene-submenu">
+            <a>Buscar posicionarse ▾</a>
+            <ul class="submenu">
+              <li><a href="#header">Header</a></li>
+              <li><a href="#center">Center</a></li>
+              <li><a href="#footer">Footer</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="tittle-info-container">
+      <div class="tittle-container">
+        <h1>Soporte Técnico Universitario</h1>
+      </div>
+      <div class="info-container">
+        <p>Validación de Credenciales de Usuario (Moulo Asíncrono)</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="center" class="center">
+    <div class="main-wrapper">
+      <h1>Esto es solo un ejemplo práctico</h1>
+      <main class="control-panel">
+        <div class="input-group">
+          <label for="user-id">Ingrese ID de Estudiante:</label>
+          <input type="number" id="user-id" placeholder="Ejemplo: 101" min="1" />
+        </div>
+        <div class="button-group">
+          <button id="btn-validar" class="btn-primary">
+            Iniciar Validación Async
+          </button>
+        </div>
+      </main>
+
+      <!-- Cerramos la sección -->
+      <div id="resultado-lab" class="output-cantainer">
+        <p class="placeholder-text">Esperando interacción del usuario...</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="footer">
+    <footer class="cake-page">
+      <div class="footer-container">
+
+        <!-- Columna 1: Info & Redes -->
+        <div class="footer-column1">
+          <h3>Nuestra Empresa</h3>
+          <p>Creamos soluciones web a la medida de tus necesidades.</p>
+          <div class="social-networks">
+            <a href="https://www.facebook.com/" class="icono-red" aria-label="Facebook"><i
+                class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/?hl=en" class="icono-red" aria-label="Instagram"><i
+                class="fa-brands fa-instagram"></i></a>
+            <a href="https://x.com/" class="icono-red" aria-label="X (Twitter)"><i
+                class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/" class="icono-red" aria-label="LinkedIn"><i
+                class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-column2">
+          <h3>Contacto</h3>
+          <div class="center-footer-column">
+            <p><i class="fa-solid fa-phone"></i> Phone: <a href="tel:+50672657605">(+506)72657605</a></p>
+            <p><i class="fa-solid fa-envelope"></i> Email: <a
+                href="mailto:sergio.hidalgo@uempresarial.com">sergio.hidalgo@uempresarial.com</a></p>
+            <p><i class="fa-solid fa-location-dot"></i>Location:
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d982.110537967225!2d-84.43637722447146!3d10.06280994133658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa05ba7034fbf37%3A0xea839002121c4301!2sUniversidad%20Empresarial!5e0!3m2!1ses!2scr!4v1783671554436!5m2!1ses!2scr" width="100%" height="180"
+                style="border:0; border-radius: 8px; filter: invert(90%) hue-rotate(180deg); margin-top: 10px;"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </p>
+          </div>
+        </div>
+        <div class="footer-column3">
+          <div class="center-footer-column">
+            <h3>Temas evaluados:</h3>
+            <p>setTimeOut</p>
+            <p>Promises</p>
+            <p>Async/Await</p>
+            <p>DOM Manipulation</p>
+          </div>
+        </div>
+        <!-- Columna 3: Enlaces rápidos -->
+        <div class="footer-column4">
+          <h3>Enlaces</h3>
+          <div class="center-footer-column">
+            <ul>
+              <li><a href="#">Inicio</a></li>
+              <li><a href="#">Servicios</a></li>
+              <li><a href="#">Políticas de Privacidad</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Barra de Copyright -->
+      <div class="footer-copyright">
+        <p>&copy; 2026 Shidalgra. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/asincronia-avanzada.js"></script>
+</body>
+
+</html>
