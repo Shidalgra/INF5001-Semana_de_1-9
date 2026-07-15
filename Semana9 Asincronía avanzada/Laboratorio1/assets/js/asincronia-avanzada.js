@@ -1,6 +1,6 @@
 // JavaScript Nativo - Reemplazo moderno de $(document).ready
 document.addEventListener("DOMContentLoaded", () => {
-  
+
   // 1- Definición de la Promesa (El "Contrato") - SE MANTIENE IGUAL
   // Usamos setTimeout para simular la latencia de red de la universidad
   const validarCredenciales = (id) => {
@@ -13,13 +13,13 @@ document.addEventListener("DOMContentLoaded", () => {
             mensaje: "Acceso Concedido",
             usuario: "Estudiante Ingeniería",
             ms: latencia,
-          }); 
+          });
         } else {
           reject(`El ID ${id} no existe en el registro central.`);
-        } 
-      }, latencia); 
-    }); 
-  }; 
+        }
+      }, latencia);
+    });
+  };
 
   // 2- Implementación con Async / Await NATIVO
   // Capturamos el botón usando querySelector (Reemplaza a $("#btn-validar"))
@@ -33,20 +33,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Limpieza y estado de carga empleando innerHTML en vez de .html()
       display.innerHTML = '<p class="loading">Consultando base de datos... por favor espere.</p>';
-      
+
       this.disabled = true; // Evita múltiples clics de forma directa en el atributo del objeto HTML
 
       try {
         // Aquí ocurre la magia: el código espera sin bloquear el navegador
         const exito = await validarCredenciales(idIngresado);
-        
+
         display.innerHTML = `
           <div class="alert success">
               <h3>${exito.mensaje}</h3>
               <p>Perfil: ${exito.usuario}</p>
               <small>Latencia de respuesta: ${exito.ms}ms</small>
           </div>
-        `; 
+        `;
       } catch (error) {
         // Manejo de la promesa rechazada (reject)
         display.innerHTML = `
@@ -54,12 +54,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 <h3>Error de Validación</h3>
                 <p>${error}</p>
             </div>
-        `; 
+        `;
       } finally {
         // Esto siempre se ejecuta, pase lo que pase
         this.disabled = false;
-      } 
-    }); 
+      }
+    });
   }
 });
 
